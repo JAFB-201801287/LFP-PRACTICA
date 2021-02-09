@@ -10,6 +10,7 @@ class Cadena():
         self.esBuscado = False
         self.buscado = {}
         self.numeros = []
+        self.texto = ''
 
 # SETTERS
 
@@ -37,6 +38,9 @@ class Cadena():
     def setNumero(self, numero):
         self.numeros.append(numero)
 
+    def setTexto(self, texto):
+        self.texto = texto
+
 # GETTERS
 
     def getId(self):
@@ -59,3 +63,41 @@ class Cadena():
     
     def getNumeros(self):
         return self.numeros
+
+    def getTexto(self):
+        return self.texto
+
+class CadenaController():
+    __instance = None
+    index = 0
+    cadenas = []
+
+    def get(self):
+        return self.cadenas
+
+    def getPuestos(self):
+        return self.puestos
+
+# Constructor ----------------------------------------
+
+    def __str__(self):
+        return self.cadenas
+
+    def __new__(cls):
+        if CadenaController.__instance is None:
+            CadenaController.__instance = object.__new__(cls)
+        return CadenaController.__instance
+
+    def __init__(self):
+        self.id = 0
+
+# Metodos ---------------------------------------------
+
+    def get(self):
+        return self.cadenas
+
+    def add(self, cadena):
+        self.cadenas.append(cadena)
+
+    def clean(self):
+        self.cadenas = []
